@@ -67,7 +67,7 @@ class DCGD:
         if ref_norm > self.eps:
             ref_unit = reference/ ref_norm
             proj = torch.dot(grad, ref_unit) * ref_unit
-            return grad - projection
+            return grad - proj
         
         return grad
     
@@ -82,7 +82,7 @@ class DCGD:
             bisec_norm = torch.norm(bisec)
 
             if bisec_norm > self.eps:
-                bisec_norm = bisec/bisec_norm
+                bisec = bisec/bisec_norm
                 total_grad = grad_b + grad_r
 
                 return torch.dot(total_grad, bisec) * bisec
@@ -133,6 +133,7 @@ class DCGD:
         update_direction = self.comp_dcdir(grad_r, grad_b)
 
         update_direction = -self.lr*update_direction
+        self.unflatten_copy(update_direction, self.params)
 
         with torch.no_grad():
             for param in self.params:
@@ -150,10 +151,10 @@ class DCGD:
         }
     
     def load_state_dict(self, state_dict):
-        self.lr = state_dict['lr']
-        self.weight_decay = state_dict['weight_decay']
-        self.mode = state_dict['mode']
-        self.eps = state_dict['eps', 1e-8]
+        self.lr = state_dict.get('lr')
+        self.weight_decay = state_dict.get('weight_decay')
+        self.mode = state_dict.get('mode')
+        self.eps = state_dict.get('eps', 1e-8)
 
 
 if __name__ == "__main__":
