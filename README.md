@@ -1,10 +1,10 @@
 # dual cone gradient descent
 
-Over the past few weeks/month (i had exams i swear) I have been working and learning on this is pytorch implementation of the This project is based on the Dual Cone Gradient Descent (DCGD) method from a NeurIPS 2024 paper by Youngsik Hwang, Dong-Young Lim, and their team. They came up with this to help train Physics-Informed Neural Networks when gradients from different losses clash. 
+Over the past few weeks/month (i had exams i swear) I have been working and learning on this is pytorch implementation of the This project is based on the Dual Cone Gradient Descent (DCGD) method from a NeurIPS 2024 paper by Youngsik Hwang, Dong-Young Lim, and their team. They came up with this to help train PINNs when gradients from different losses clash. 
 
-It is designed to optimize two losses at the same time, which often happens in Physics-Informed Neural Networks. When the gradients from these losses point in different or conflicting directions, it can make training unstable or less effective. DCGD solves this problem by combining the gradients in a way that avoids these conflicts. This helps the model improve both losses together more smoothly and efficiently.
+It is designed to optimize two losses at the same time, which often happens in Physics-Informed Neural Networks. When the gradients from these losses point in different or conflicting directions, it can make training unecessarily unstable or less effective. DCGD solves this issue through combining the gradients in a way that avois sy=uch conflicts. This helps the model improve both losses together more smoothly + more efficiently.
 
-the optimizer supports three modes:  
+the optimizer witholds three modes:  
 - `center`: bisects normalized gradients  
 - `projection`: removes conflicting directions based on magnitude  
 - `average`: orthogonal projection average  
@@ -60,7 +60,7 @@ Updated loss_r: 1.1092
 Updated loss_b: 0.0648
 Optmizer mode: center
 ```
-Below is Figure 1 from the original paper, showing how DCGD outperforms Adam in minimizing conflicting losses in a PINN setup:
+Below is Figure 1 from the original paper; it shows how DCGD outperforms Adam in minimizing conflicting losses in a PINN-type setup:
 
 <img width="312" alt="image" src="https://github.com/user-attachments/assets/d9893bcf-e3ef-40a2-888b-97a39c4bce72" />
 
@@ -88,11 +88,11 @@ NeurIPS 2024 (https://arxiv.org/pdf/2409.18426)
 
 ### How it works
 
-* gradients are flattened → resolved using chosen mode → unflattened and applied
-* weight decay support is included
+* gradients end up flattened → then resolved using chosen mode → then proceed to be unflattened and applied
+* weight decay support has been included
 * `eps` avoids division by zero when normalizing
 
-The figures below (2–4 from the paper) illustrate how DCGD resolves conflicting gradients using dual cone projections:
+The figures below (2–4 from the paper) illustrate how DCGD resolves conflicting gradients using the dual cone projections:
 
 <img width="581" alt="image" src="https://github.com/user-attachments/assets/ed55900e-818c-420e-8a2c-3503c212287a" style="border: 1px solid #ccc; padding: 4px; border-radius: 6px;"/>
 <img width="499" alt="image" src="https://github.com/user-attachments/assets/e6593e62-c05f-4dec-9fac-910477fc338e" />
@@ -102,9 +102,9 @@ The figures below (2–4 from the paper) illustrate how DCGD resolves conflictin
 
 ### What I Learned
 
-When I first started this project, I mainly focused on getting the optimizer to run on some simple fake data. I wasn’t super confident with all the math behind it, but working through the implementation pushed me to understand how PyTorch handles gradients — especially when you’re dealing with multiple losses at once. Flattening gradients, reassigning them, and handling cases like missing or conflicting gradients was tricky but really eye-opening.
+When I first started this project, I mainly focused on getting the optimizer to run on some fake data. I wouldn’t say I was super confident with all the math behind it, but working through the implementation pushed me to understand how PyTorch handles gradients — especially when you’re dealing with multiple losses at once. Flattening gradients, reassigning them, and handling cases similar to missing or conflicting gradients was tricky but truly eye-opening.
 
-Because I’m interested in physics, building this project gave me a chance to connect what I’ve learned in class to real-world problems where physics and machine learning meet. Even if I didn’t fully grasp every equation, the hands-on coding helped me get the core ideas and what’s really going on behind the scenes.
+Since I’m interested in physics, building this project gave me a chance to connect what I’ve learned in class to real-world problems where physics & machine learning meet. Even if I didn’t fully grasp every single equation, the hands-on coding helped me get the core ideas and the significance of the algorithm in a greater setting.
 
 ---
 
