@@ -1,6 +1,6 @@
 # dual cone gradient descent
 
-Over the past few weeks/month (i had exams i swear) I have been working and learning on this is pytorch implementation of the This project is based on the Dual Cone Gradient Descent (DCGD) method from a NeurIPS 2024 paper by Youngsik Hwang, Dong-Young Lim, and their team. They came up with this to help train PINNs when gradients from different losses clash. 
+Over the past few weeks/month (i had exams i swear) I have been working and learning on this is pytorch implementation of this project. It is based on the Dual Cone Gradient Descent (DCGD) method from a NeurIPS 2024 paper by Youngsik Hwang, Dong-Young Lim, and their team. They came up with this to help train PINNs when gradients from different losses clash. 
 
 It is designed to optimize two losses at the same time, which often happens in Physics-Informed Neural Networks. When the gradients from these losses point in different or conflicting directions, it can make training unecessarily unstable or less effective. DCGD solves this issue through combining the gradients in a way that avoid such conflicts. This helps the model improve both losses together more smoothly + more efficiently.
 
