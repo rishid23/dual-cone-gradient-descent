@@ -96,6 +96,7 @@ The figures below (2–4 from the paper) illustrate how DCGD resolves conflictin
 
 <img width="581" alt="image" src="https://github.com/user-attachments/assets/ed55900e-818c-420e-8a2c-3503c212287a" style="border: 1px solid #ccc; padding: 4px; border-radius: 6px;"/>
 <img width="499" alt="image" src="https://github.com/user-attachments/assets/e6593e62-c05f-4dec-9fac-910477fc338e" />
+<img width="586" alt="image" src="https://github.com/user-attachments/assets/ce5b9afc-0a9f-477d-91c9-b93eb20322e7" />
 
 
 ---
